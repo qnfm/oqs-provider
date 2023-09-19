@@ -134,7 +134,7 @@ jobs:
         if: steps.cache-openssl32.outputs.cache-hit != 'true'
         with:
           platform: ${{ matrix.platform.arch }}
-      - name: Setup perl for OpenSSl build
+      - name: Setup perl for OpenSSL build
         uses: shogo82148/actions-setup-perl@v1
         if: steps.cache-openssl32.outputs.cache-hit != 'true'
 # OQS_USE_OPENSSL=OFF by default on Win32
@@ -244,7 +244,7 @@ jobs:
           if: steps.cache-openssl32.outputs.cache-hit != 'true'
           with:
             platform: ${{ matrix.platform.arch }}
-        - name: Setup perl for OpenSSl build
+        - name: Setup perl for OpenSSL build
           uses: shogo82148/actions-setup-perl@v1
           if: steps.cache-openssl32.outputs.cache-hit != 'true'
 # OQS_USE_OPENSSL=OFF by default on Win32
