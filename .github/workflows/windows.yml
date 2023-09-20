@@ -242,7 +242,7 @@ jobs:
           uses: microsoft/setup-msbuild@v1.3
           with:
             msbuild-architecture: ${{matrix.msarch}}
-            vs-version: 2019
+            vs-version: "2022"
         - name: Setup nasm for OpenSSL build
           uses: ilammy/setup-nasm@v1
           if: steps.cache-openssl32.outputs.cache-hit != 'true'
@@ -262,10 +262,10 @@ jobs:
             cmake --version
             mkdir build
             cd build
-            cmake -GNinja -DCMAKE_C_FLAGS="/D_WINDOWS /Wv:18 /wd5105" -A ${{matrix.msarch}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX="c:\liboqs" ${{ matrix.platform.oqsconfig }} -DOQS_DIST_BUILD=ON ..
-            ninja
-            ninja install
-            #cmake --build build
+            cmake -DCMAKE_C_FLAGS="/D_WINDOWS /Wv:18 /wd5105" -A ${{matrix.msarch}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX="c:\liboqs" ${{ matrix.platform.oqsconfig }} -DOQS_DIST_BUILD=ON ..
+            cd ..
+            cmake --build build
+            cmake --install build
             #msbuild -noLogo -v:quiet ALL_BUILD.vcxproj -p:Configuration=Release 
             #msbuild -noLogo -v:quiet INSTALL.vcxproj -p:Configuration=Release 
           working-directory: liboqs
