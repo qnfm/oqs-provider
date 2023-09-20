@@ -205,7 +205,7 @@ jobs:
       matrix:
         os:
           - windows-2019
-          - windows-2022
+#          - windows-2022
         platform:
           - arch: win64
             oqsconfig: -DOQS_ALGS_ENABLED=STD
@@ -238,8 +238,9 @@ jobs:
         - uses: ilammy/msvc-dev-cmd@v1
           with:
             arch: ${{ matrix.platform.arch }}
+            vsversion:  "2022"
         - name: Add msbuild to PATH
-          uses: microsoft/setup-msbuild@v1.3
+          uses: microsoft/setup-msbuild@v1
           with:
             msbuild-architecture: ${{matrix.msarch}}
             vs-version: '[17.4,]'
