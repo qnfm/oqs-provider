@@ -242,7 +242,7 @@ jobs:
           uses: microsoft/setup-msbuild@v1.3
           with:
             msbuild-architecture: ${{matrix.msarch}}
-            vs-version: '[17.4,17.8]'
+            vs-version: 2022
         - name: Setup nasm for OpenSSL build
           uses: ilammy/setup-nasm@v1
           if: steps.cache-openssl32.outputs.cache-hit != 'true'
