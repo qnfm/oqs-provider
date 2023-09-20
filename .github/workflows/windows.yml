@@ -262,8 +262,8 @@ jobs:
             mkdir build
             cd build
             cmake -G "Visual Studio 16 2019" -DCMAKE_C_FLAGS="/wd5105" -A ${{matrix.msarch}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX="c:\liboqs" ${{ matrix.platform.oqsconfig }} -DOQS_DIST_BUILD=ON ..
-            msbuild -noLogo -v:quiet ALL_BUILD.vcxproj
-            msbuild -noLogo -v:quiet INSTALL.vcxproj
+            msbuild -noLogo -v:quiet ALL_BUILD.vcxproj -p:Configuration=Release 
+            msbuild -noLogo -v:quiet INSTALL.vcxproj -p:Configuration=Release 
           working-directory: liboqs
         - name: prepare the OpenSSL build directory
           if: steps.cache-openssl32.outputs.cache-hit != 'true'
