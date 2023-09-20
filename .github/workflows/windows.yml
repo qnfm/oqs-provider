@@ -261,7 +261,7 @@ jobs:
             cmake --version
             mkdir build
             cd build
-            cmake -DCMAKE_C_FLAGS="/wd5105" -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX="c:\liboqs" ${{ matrix.platform.oqsconfig }} -DOQS_DIST_BUILD=ON ..
+            cmake -G "Visual Studio 16 2019" -DCMAKE_C_FLAGS="/wd5105" -A ${{matrix.msarch}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX="c:\liboqs" ${{ matrix.platform.oqsconfig }} -DOQS_DIST_BUILD=ON ..
             msbuild -noLogo -v:quiet ALL_BUILD.vcxproj
             msbuild -noLogo -v:quiet INSTALL.vcxproj
           working-directory: liboqs
