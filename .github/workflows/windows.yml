@@ -210,9 +210,10 @@ jobs:
           - arch: win64
             oqsconfig: -DOQS_ALGS_ENABLED=STD
             osslconfig: no-shared no-fips VC-WIN64A-masm
-#          - arch: win32
-#            oqsconfig: -DOQS_ALGS_ENABLED=STD
-#            osslconfig: --strict-warnings no-fips enable-quic
+        msarch:
+          - x64
+# - arm64
+# - x86
     runs-on: ${{matrix.os}}
     steps:
         - name: Restore OpenSSL32 cache
@@ -239,6 +240,8 @@ jobs:
             arch: ${{ matrix.platform.arch }}
         - name: Add msbuild to PATH
           uses: microsoft/setup-msbuild@v1.1
+          with:
+            msbuild-architecture: ${{matrix.msarch}}
         - name: Setup nasm for OpenSSL build
           uses: ilammy/setup-nasm@v1
           if: steps.cache-openssl32.outputs.cache-hit != 'true'
