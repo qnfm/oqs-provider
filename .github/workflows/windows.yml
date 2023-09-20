@@ -262,7 +262,7 @@ jobs:
             cmake --version
             mkdir build
             cd build
-            cmake -G "Visual Studio 16 2019" -DCMAKE_C_FLAGS="/D_WINDOWS /Wv:18 /wd5105" -A ${{matrix.msarch}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX="c:\liboqs" ${{ matrix.platform.oqsconfig }} -DOQS_DIST_BUILD=ON ..
+            cmake -DCMAKE_C_FLAGS="/D_WINDOWS /Wv:18 /wd5105" -A ${{matrix.msarch}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX="c:\liboqs" ${{ matrix.platform.oqsconfig }} -DOQS_DIST_BUILD=ON ..
             #cmake --build build
             msbuild -noLogo -v:quiet ALL_BUILD.vcxproj -p:Configuration=Release 
             msbuild -noLogo -v:quiet INSTALL.vcxproj -p:Configuration=Release 
