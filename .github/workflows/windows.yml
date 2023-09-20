@@ -238,7 +238,6 @@ jobs:
         - uses: ilammy/msvc-dev-cmd@v1
           with:
             arch: ${{ matrix.platform.arch }}
-            vsversion:  "2022"
         - name: Add msbuild to PATH
           uses: microsoft/setup-msbuild@v1
           with:
